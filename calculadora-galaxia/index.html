@@ -1,0 +1,283 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="pt_br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>calc. master</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Ubuntu:wght@700&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+
+
+
+<style>
+        
+      html {
+          height: 100%;
+          background: url('galaxy.jpg') no-repeat;
+          background-position: center;
+          background-size: cover;
+          font-family: 'Roboto', sans-serif;
+        }
+        
+        .content {
+          align-items: center;
+          text-align: center;
+        }
+        
+        body{
+          display: flex;
+          flex-direction:row;
+        }
+        
+        h1 {   
+          
+          background: -webkit-linear-gradient(45deg,  #41ead4 10%,rgba(42,50,113) 90%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+          font-family: "Ubuntu", sans-serif;
+          color: #41ead4;
+          text-align: center;
+          display: flex;
+          align-items: center;
+          font-weight: 300;
+          margin: 48px;
+          font-size: 40px;
+
+        }
+
+        
+
+
+      button{
+        
+        background: rgba(42,50,113, .28);
+        color: #41ead4;
+        cursor: pointer;
+        float: left;
+        font: inherit;
+        margin: 0.25em;
+        width: 2em;
+        height: 2em;
+        transition: all 0.3s;
+        border-radius: 7px;
+        border: 2px solid #41ead4;
+        cursor: pointer;
+          
+      }
+
+      button:hover {
+        background: #d7f9ff;
+        color: rgba(42,50,113);
+        }
+
+      button:focus {
+        outline: 0; 
+        }
+      button:focus::after {
+            
+        content: attr(data-num);
+        cursor: default;
+        font-size: 100px;
+        position: absolute;
+            top: 1.5em;
+            left: 50%;
+        text-align: center;
+        margin-left: -24px;
+        opacity: 0;
+        width: 48px;    
+          
+        }
+        .aviso{
+          background: -webkit-linear-gradient(45deg,  #41ead4 10%,rgba(42,50,113) 90%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        color: #8c5059;
+        font-weight: 400;
+        margin: 0 auto ;
+        max-width: 15em;
+      }
+        
+   
+
+      .calculadora::before,.calculadora::after {
+          content: " ";
+          display: table;
+        }
+        
+        .calculadora::after {
+          clear: both;
+        }
+
+      #modal {
+          background-color: #0e0a14d7;
+          height: 80vh;
+          width: 90vw;
+          position: fixed;
+          top: 0;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          
+          margin: 80px 22%;
+          
+           
+          border-radius: 8px;
+          max-width: 800px;    
+          box-sizing: border-box;
+      }
+
+      #modal .content {
+        position: relative;
+          text-align: center;
+          color: white;
+          align-items: center;
+          width: 420px;
+          margin-bottom: 60px;
+          
+
+      }
+
+      .painel{
+        color: #c97874;
+        float: left;
+        line-height: 2em;
+        text-align: right;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        width: 7.5em;
+        height: 3em;
+        align-items: center;
+        text-align: center;
+      }
+
+      .ops:focus::after {
+        content: attr(data-ops);
+        margin-left: -210px;
+        width: 420px;
+      }
+
+      .reset {
+      
+        background: rgba(42,50,113, .28);
+        color:#41ead4 ;
+        font-weight: 400;
+        margin-left: -77px;
+        padding: 0.5em 1em;
+        position: absolute;
+          top: -20em;
+          left: 50%;
+        width: auto;
+        height: auto;
+      }
+      .reset:hover {
+          background: #c97874;
+          color: #100a1c;    
+        }
+      .reset.show {
+          top: 20em;
+          
+        }
+
+        .equals:focus::after {
+        content: attr(data-result);
+        margin-left: -300px;
+        width: 600px;
+      }
+
+
+      .items-grid{
+        display: grid;
+          grid-template-columns: 1fr 1fr 1fr 1fr;
+          gap: 16px;
+      }
+
+      .items-grid li {
+          background-color: #f5f5f500;
+          list-style: none;    
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: space-between;
+          text-align: center;
+          
+      }
+
+      .firstline {
+          
+          font-size: 20px;
+      }
+      .panel-grid{
+        display: grid;
+          grid-template-columns: 1fr 1fr 1fr 1fr;
+          gap: 16px;
+      }
+
+      .panel-grid li {
+          background-color: #f5f5f500;
+          list-style: none;    
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: space-between;
+          text-align: center;
+          
+      }
+
+
+      
+
+</style>
+
+
+<body>
+    <div id="modal">
+        <div id="content">
+            <h1> Calculadora das Galáxias </h1>
+                <p class="aviso">Dividir por zero você não deve</p>
+
+                <div id="calculadora" class="Calculadora">
+                  <div class="panel-grid">
+                    
+                        <li><button id="limpar" class="num">C</button></li>
+                        <li></li>
+                        <li> </li>
+                        <li><div id="painel" class="painel">0</div></li>
+                       
+                  </div>
+                  <div class="items-grid"> 
+                                  <!--primeira linha -->
+                              <li><button class="num" data-num="7">7</button></li>
+                              <li><button class="num" data-num="8">8</button></li>
+                              <li><button class="num" data-num="9">9</button></li>
+                              <li><button data-ops="plus" class="ops">+</button></li>
+                              
+                                  <!--segunda linha -->
+                                  <li><button class="num" data-num="4">4</button></li>
+                                  <li><button class="num" data-num="5">5</button></li>
+                                  <li><button class="num" data-num="6">6</button></li>
+                                  <li><button data-ops="menos" class="ops">-</button></li>
+                              
+                                  <!--terceira linha -->
+                                  <li><button class="num" data-num="1">1</button></li>
+                                  <li><button class="num" data-num="2">2</button></li>
+                                  <li><button class="num" data-num="3">3</button></li>
+                                  <li><button data-ops="vezes" class="ops">*</button></li>
+                              
+                                  <!--quarta linha -->
+                                  <li><button class="num" data-num="0">0</button></li>
+                                  <li><button class="num" data-num=".">.</button></li>
+                                  <li><button id="equals" class="equals" data-result="">=</button></li>
+                                  <li><button data-ops="divisao" class="ops">/</button></li>
+                    </div>
+                </div>
+          </div>
+
+<button id="reset" class="reset">Resetar o universo?</button>
+</div>
+</body>
+</html>
