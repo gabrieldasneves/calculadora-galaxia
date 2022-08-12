@@ -35,7 +35,7 @@ html {
   
 
 
-button{
+input{
   
   background: rgba(42,50,113, .28);
   color: #41ead4;
@@ -52,15 +52,15 @@ button{
     
 }
 
-button:hover {
+input:hover {
   background: #d7f9ff;
   color: rgba(42,50,113);
   }
 
-button:focus {
+input:focus {
   outline: 0; 
   }
-button:focus::after {
+input:focus::after {
       
   content: attr(data-num);
   cursor: default;
