@@ -11,14 +11,14 @@ function clean(){
 }
 
 function calculate(){
-    const result = eval(operation);
-    resultScreen.value = result;
+    var resultado = 0;
+    resultado = document.getElementById('painel').value;
+    document.getElementById('painel').value = '';
+    document.getElementById('painel').value = eval(resultado)
 }
 
-function popVal(){
-    const phrase = resultScreen.value;
 
 
-}
+
 
 

@@ -35,7 +35,7 @@ html {
   
 
 
-input{
+input, button{
   
   background: rgba(42,50,113, .28);
   color: #41ead4;
@@ -74,6 +74,31 @@ input:focus::after {
   width: 48px;    
     
   }
+
+  button:hover {
+    background: #d7f9ff;
+    color: rgba(42,50,113);
+    }
+  
+  button:focus {
+    outline: 0; 
+    }
+  button:focus::after {
+        
+    content: attr(data-num);
+    cursor: default;
+    font-size: 100px;
+    position: absolute;
+        top: 1.5em;
+        left: 50%;
+    text-align: center;
+    margin-left: -24px;
+    opacity: 0;
+    width: 48px;    
+      
+    }
+
+
   .aviso{
     background: -webkit-linear-gradient(45deg,  #41ead4 10%,rgba(42,50,113) 90%);
   -webkit-background-clip: text;
@@ -124,16 +149,13 @@ input:focus::after {
 
 }
 
-.painel{
+#painel{
   color: #c97874;
-  float: left;
-  line-height: 2em;
-  text-align: right;
+  float: right;
   text-overflow: ellipsis;
   overflow: hidden;
-  width: 7.5em;
+  width: 80%;
   height: 3em;
-  align-items: center;
   text-align: center;
 }
 
@@ -195,7 +217,7 @@ input:focus::after {
 }
 .panel-grid{
   display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr  1fr;
     gap: 16px;
 }
 
