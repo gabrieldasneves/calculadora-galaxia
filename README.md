@@ -6,4 +6,4 @@ Calculadora simples tematizada
 HTML & CSS & JavaScript
 
 ## Layout:
-![print screen](assets\screenshot.png)
+![print screen](screenshot.png)
