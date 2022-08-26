@@ -2,7 +2,7 @@
 # Calculadora das galáxias
 Calculadora simples tematizada 
 
- ## Tecnologias usadas:
+ ## 🛠 Tecnologias usadas:
 HTML & CSS & JavaScript
 
 ## Layout:
